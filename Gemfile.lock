@@ -42,6 +42,7 @@ GEM
     async-pool (0.3.12)
       async (>= 1.25)
     builder (3.2.4)
+    byebug (11.1.3)
     concurrent-ruby (1.1.10)
     console (1.15.3)
       fiber-local
@@ -133,6 +134,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  byebug
   rails_graph!
   rake (~> 13.0)
   rspec (~> 3.0)

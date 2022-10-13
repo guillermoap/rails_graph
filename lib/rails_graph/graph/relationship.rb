@@ -16,7 +16,7 @@ module RailsGraph
       end
 
       def identifier
-        "#{label}##{source.identifier}##{target.identifier}##{name}"
+        "#{label}##{source.identifier}##{target&.identifier}##{name}"
       end
 
       def as_json(_options = nil)
@@ -25,7 +25,7 @@ module RailsGraph
           label: label,
           name: name,
           source: source.id,
-          target: target.id,
+          target: target&.id,
           properties: properties
         }
       end

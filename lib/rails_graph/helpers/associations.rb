@@ -17,7 +17,7 @@ module RailsGraph
 
       def target_identifier(association)
         return "PolymorphicModel" if association.polymorphic?
-
+        return "ThroughModel" if association.through_reflection
         RailsGraph::Helpers::Models.identifier(association.klass)
       end
 

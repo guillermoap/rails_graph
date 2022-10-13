@@ -36,7 +36,13 @@ module RailsGraph
         end
 
         def class_name
-          name = association.polymorphic? ? association.class_name : association.klass.name
+          name = if association.polymorphic?
+            association.class_name
+          elsif through?
+            association.through_reflection.klass.name
+          else
+            association.klass.name
+          end
 
           name.delete_prefix("::")
         end
@@ -50,7 +56,7 @@ module RailsGraph
         end
 
         def foreign_key
-          association.foreign_key.to_s
+          association&.foreign_key&.to_s
         end
 
         def foreign_type
